@@ -1,0 +1,83 @@
+#This file needs a better name later....
+* DOWNLOAD .ISO
+# Have a wget command to download the file from the most recent mini ubuntu link
+# Create a directory to store all of these files?
+# Which to use? mini.iso or full linux mint
+
+* (OPTIONAL) CREATE BOOTABLE USB
+# Might need the seeding file below to be added to the usb.
+
+* INSTALL
+# Need to have some sort of preconfig file set-up
+# See the attached file
+Link to [[./install/example-preseed.txt][sample file]]
+
+* FIRST BOOT
+
+** SET UP HOME DIRECTORY
+# Before we begin, need to find easy way to find working directory and switch to home,
+# Maybe this works? 
+# Add some sort of check in
+
+*** CLEAN UP
+ First, I like to have my own directory structure. I want to remove all of the default directories included by the distribution. They should be empty.
+
+ #+BEGIN_SRC shell
+rmdir $HOME/*
+ #+END_SRC
+
+*** CREATE SUBDIRECTORIES
+ The following are directories I use:
+
+ #+name: home-directories
+ #+BEGIN_EXAMPLE
+in
+tmp
+src
+bin
+org
+projects
+storage/pictures
+storage/videos
+storage/documents
+storage/music
+ #+END_EXAMPLE
+
+and we will now create these 
+
+ #+BEGIN_SRC shell :var HDIR=home-directories
+mkdir -p $HDIR
+ #+END_SRC
+
+*** CONFIGURE XDG 
+# This should really be done using the dotfiles
+#+BEGIN_SRC shell :file ~/.config/
+
+#+END_SRC
+
+
+
+**** TODO what about dotfiles?
+
+** INSTALL REQUIRED PACKAGES
+Here is a list of packages I use regularly and require.
+
+#+BEGIN_EXAMPLE
+git
+build-essential
+curl
+wkhtmltopdf
+#+END_EXAMPLE
+
+
+
+** ADD EMACS SNAPSHOT REPOSITORY
+#Obviously install afterwards 
+
+** INSTALL SCIMAX
+
+** OTHER?
+
+* CONFIGURATION
+
+* 
