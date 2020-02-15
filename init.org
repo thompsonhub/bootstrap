@@ -7,7 +7,7 @@
 * (OPTIONAL) CREATE BOOTABLE USB
 # Might need the seeding file below to be added to the usb.
 
-* INSTALL
+* INSTALL .ISO
 # Need to have some sort of preconfig file set-up
 # See the attached file
 Link to [[./install/example-preseed.txt][sample file]]
@@ -28,12 +28,11 @@ rmdir $HOME/*
 
 *** CREATE SUBDIRECTORIES
  The following are directories I use:
-
+# Removed src folder
  #+name: home-directories
  #+BEGIN_EXAMPLE
 in
 tmp
-src
 bin
 org
 projects
@@ -49,15 +48,6 @@ and we will now create these
 mkdir -p $HDIR
  #+END_SRC
 
-*** CONFIGURE XDG 
-# This should really be done using the dotfiles
-#+BEGIN_SRC shell :file ~/.config/
-
-#+END_SRC
-
-
-
-**** TODO what about dotfiles?
 
 ** INSTALL REQUIRED PACKAGES
 Here is a list of packages I use regularly and require.
@@ -67,6 +57,10 @@ git
 build-essential
 curl
 wkhtmltopdf
+texlive
+texlive-science
+texlive-latex-extra
+dvipng
 #+END_EXAMPLE
 
 
@@ -75,6 +69,32 @@ wkhtmltopdf
 #Obviously install afterwards 
 
 ** INSTALL SCIMAX
+
+** INSTALL ANACONDA
+Get anaconda from thing.
+
+*** DEPENDENCIES
+#+name: conda-dependencies
+#+BEGIN_EXAMPLE
+libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+#+END_EXAMPLE
+
+*** DOWNLOAD
+
+Download the anaconda distro for linux
+#+name: conda-link
+https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+#+BEGIN_SRC shell :var LINK=conda-link
+wget $LINK -o ~/miniconda.sh
+#+END_SRC
+
+
+*** SHA256 CHECK
+
+*** RUN BASH INSTALL SCRIPT
+
+*** MODIFY PATH
 
 ** OTHER?
 
