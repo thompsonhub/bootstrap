@@ -1,0 +1,175 @@
+* DOWNLOAD .ISO
+# Have a wget command to download the file from the most recent mini ubuntu link
+# Create a directory to store all of these files?
+# Which to use? mini.iso or full linux mint
+
+
+* (OPTIONAL) CREATE BOOTABLE USB
+# Might need the seeding file below to be added to the usb.
+
+
+* INSTALL .ISO
+# Need to have some sort of preconfig file set-up
+# See the attached file
+Link to [[./install/example-preseed.txt][sample file]]
+
+
+* FIRST BOOT - INSTALLATION
+
+** GIT CLONE NECESSARY REPOSITORIES
+
+First, we need to install git and run this script. Using apt-get, run the following.
+
+#+BEGIN_SRC shell
+sudo apt-get update
+sudo apt-get install -y git
+#+END_SRC
+
+Then, git clone bootstrap into the projects directory, followed by dotfiles.
+
+#+BEGIN_SRC shell
+git clone https://github.com/thompsonhub/bootstrap.git $HOME/projects/bootstrap
+git clone https://github.com/thompsonhub/dotfiles.git $HOME/projects/dotfiles
+#+END_SRC
+
+
+** APT-GET INSTALL
+
+*** REQUIRED PACKAGES
+
+ Here is a list of packages I use regularly and require.
+
+ #+BEGIN_EXAMPLE
+build-essential
+curl
+zsh
+i3
+suckless-tools
+xinit
+ #+END_EXAMPLE
+
+
+*** LATEX
+
+ #+BEGIN_EXAMPLE
+wkhtmltopdf
+texlive
+texlive-science
+texlive-latex-extra
+dvipng
+ #+END_EXAMPLE
+
+
+*** VIRTUALBOX DEPENDENCIES
+
+ #+name: vbox-dependencies
+ #+BEGIN_EXAMPLE
+dkms build-essential linux-headers-generic linux-headers-$(uname -r)
+ #+END_EXAMPLE
+
+
+*** EMACS DEPENDENCIES
+
+*** CONDA DEPENDENCIES
+
+ #+name: conda-dependencies
+ #+BEGIN_EXAMPLE
+libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+ #+END_EXAMPLE
+
+
+*** EMACS SNAPSHOT
+
+
+** VIRTUALBOX GUEST ADDITIONS
+
+First, the virtualbox guest additions cd must be inserted. Once it is, mount the cdrom.
+
+#+BEGIN_SRC shell
+sudo mount /dev/cdrom /mnt
+#+END_SRC
+
+Then, run the install command.
+
+#+BEGIN_SRC shell
+sudo /mnt/VboxLinuxAdditions.run
+#+END_SRC
+
+Once completed, unmount the cdrom and reboot.
+
+#+BEGIN_SRC shell
+sudo umount /mnt
+reboot
+#+END_SRC
+
+
+** EMACS
+
+*** INSTALL SCIMAX
+
+
+** INSTALL CONDA PYTHON
+
+*** DOWNLOAD
+
+ Download the anaconda distro for linux
+ #+name: conda-link
+ https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+ #+BEGIN_SRC shell :var LINK=conda-link
+wget $LINK -o ~/miniconda.sh
+ #+END_SRC
+
+
+*** SHA256 CHECK
+
+
+*** RUN BASH INSTALL SCRIPT
+
+
+*** MODIFY PATH
+
+
+* FIRST BOOT - CONFIGURE
+
+
+** SET UP HOME DIRECTORY
+# Before we begin, need to find easy way to find working directory and switch to home,
+# Maybe this works? 
+# Add some sort of check in
+
+
+*** CLEAN UP
+ First, I like to have my own directory structure. I want to remove all of the default directories included by the distribution. They should be empty.
+
+ #+BEGIN_SRC shell
+rmdir $HOME/*
+ #+END_SRC
+
+
+*** CREATE SUBDIRECTORIES
+ The following are directories I use:
+# Removed src folder
+ #+name: home-directories
+ #+BEGIN_EXAMPLE
+in
+tmp
+bin
+org
+projects
+storage/pictures
+storage/videos
+storage/documents
+storage/music
+ #+END_EXAMPLE
+
+and we will now create these 
+
+ #+BEGIN_SRC shell :var HDIR=home-directories
+mkdir -p $HDIR
+ #+END_SRC
+
+
+** OTHER?
+
+
